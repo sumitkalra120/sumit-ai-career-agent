@@ -21,7 +21,7 @@ with gr.Blocks() as demo:
 
     gr.Markdown(
         """
-        # 🤖 Sumit's AI Career Agent
+        # 🤖 Meet Sumit's AI Career Assistant
 
         Ask me anything about Sumit's professional background,
         experience, skills, and career.
@@ -50,6 +50,16 @@ with gr.Blocks() as demo:
         outputs=chatbot_output
     )
 
+    gr.Markdown(
+        """
+        ---
+        <div style="text-align:center; font-size:14px; color:gray;">
+        💡 <b>Note:</b> This AI assistant answers questions exclusively using
+        Sumit's resume and professional experience summary. It does not fabricate
+        information or respond beyond the provided documents.
+        </div>
+        """
+    )
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
