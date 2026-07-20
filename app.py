@@ -17,7 +17,7 @@ def ai_assistant(user_prompt):
         return f"Error: {str(e)}"
 
 
-with gr.Blocks() as demo:
+with gr.Blocks(theme=gr.themes.Monochrome()) as demo:
 
     gr.Markdown(
         """
@@ -34,6 +34,18 @@ with gr.Blocks() as demo:
         lines=3
     )
 
+    gr.Examples(
+        examples=[
+            ["Tell me about your AI experience."],
+            ["What are your key technical skills?"],
+            ["Tell me about your leadership experience."],
+            ["Summarize your professional background."],
+            ["What cloud technologies have you worked with?"],
+            ["Describe your experience with Generative AI."]
+        ],
+        inputs=user_input
+    )
+
     submit_button = gr.Button(
         "Ask me",
         variant="primary"
@@ -47,7 +59,8 @@ with gr.Blocks() as demo:
     submit_button.click(
         fn=ai_assistant,
         inputs=user_input,
-        outputs=chatbot_output
+        outputs=chatbot_output,
+        show_progress="full"    
     )
 
     gr.Markdown(
@@ -65,6 +78,6 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
 
     demo.launch(
-        server_name="0.0.0.0",
-        server_port=port
+        server_name="127.0.0.1",
+        server_port=7861
     )
