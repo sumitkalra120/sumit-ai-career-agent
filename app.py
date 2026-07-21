@@ -17,7 +17,7 @@ def ai_assistant(user_prompt):
         return f"Error: {str(e)}"
 
 
-with gr.Blocks(theme=gr.themes.Monochrome()) as demo:
+with gr.Blocks() as demo:
 
     gr.Markdown(
         """
@@ -78,6 +78,6 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
 
     demo.launch(
-        server_name="127.0.0.1",
-        server_port=7861
+        server_name="0.0.0.0",
+        server_port=port
     )
